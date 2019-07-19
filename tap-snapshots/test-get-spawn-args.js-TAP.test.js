@@ -53,6 +53,31 @@ exports[`test/get-spawn-args.js TAP > just basics 1`] = `
 ]
 `
 
+exports[`test/get-spawn-args.js TAP > just basics (windows) 1`] = `
+[
+  "C:\\Windows\\system32\\cmd.exe",
+  [
+    "/d /s /c",
+    "cmd"
+  ],
+  {
+    "cwd": "/working/dir",
+    "env": {
+      "env": "iron",
+      "men": "tal"
+    },
+    "stdio": [
+      0,
+      1,
+      2
+    ],
+    "uid": 123,
+    "gid": 432,
+    "windowsVerbatimArguments": true
+  }
+]
+`
+
 exports[`test/get-spawn-args.js TAP > stdio and numeric string uid 1`] = `
 [
   "sh",

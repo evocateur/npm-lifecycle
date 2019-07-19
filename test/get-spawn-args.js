@@ -10,18 +10,22 @@ const b = { cmd, wd, env, uid: 123, gid: 432, opts: {} }
 
 const snap = (o, m) => t.matchSnapshot(JSON.stringify(o, null, 2), m)
 
-snap(getSpawnArgs(b), 'just basics')
+if (process.platform === 'win32') {
+  snap(getSpawnArgs(b), 'just basics (windows)')
+} else {
+  snap(getSpawnArgs(b), 'just basics')
 
-snap(getSpawnArgs(Object.assign({}, b, {
-  opts: { stdio: [3, 2, 1] },
-  uid: '123'
-})), 'stdio and numeric string uid')
+  snap(getSpawnArgs(Object.assign({}, b, {
+    opts: { stdio: [3, 2, 1] },
+    uid: '123'
+  })), 'stdio and numeric string uid')
 
-snap(getSpawnArgs(Object.assign({}, b, {
-  opts: { stdio: [3, 2, 1] },
-  uid: '123',
-  unsafe: true
-})), 'unsafe numeric string uid')
+  snap(getSpawnArgs(Object.assign({}, b, {
+    opts: { stdio: [3, 2, 1] },
+    uid: '123',
+    unsafe: true
+  })), 'unsafe numeric string uid')
+}
 
 process.env.comspec = 'CMD.exe'
 snap(getSpawnArgs(Object.assign({}, b, {
