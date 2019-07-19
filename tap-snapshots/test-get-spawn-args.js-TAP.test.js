@@ -55,7 +55,7 @@ exports[`test/get-spawn-args.js TAP > just basics 1`] = `
 
 exports[`test/get-spawn-args.js TAP > just basics (windows) 1`] = `
 [
-  "C:\\Windows\\system32\\cmd.exe",
+  "C:\\\\Windows\\\\system32\\\\cmd.exe",
   [
     "/d /s /c",
     "cmd"
